@@ -62,7 +62,13 @@ public class Boutique
                         ingredient.Quantite -= ingredientRecette.Quantite;
                     }
                 }
-                // TODO Compléter (voir documentation)
+                //créer et ajoute une tarte à l'inventaire
+                Tarte tarte1 = new(recette, dateProduction);
+                InventaireTartes.Add(tarte1);
+
+                //deduction du solde
+                tarte1.Prix = recette.CoutProduction;
+                Solde =- tarte1.Prix;
             }
             catch (Exception)
             {
