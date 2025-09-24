@@ -25,14 +25,17 @@ public class TarteTests
     {
         DateOnly dateVerification = dateProduction.AddDays(3);
         Tarte tarte = new Tarte(recette, dateProduction);
-        //TODO Retirer et compléter le test
-        Assert.Fail();
+
+        Assert.True(dateVerification > tarte.MeilleureAvant);
+        Assert.True(tarte.DevraitEtreJetee(dateVerification));
     }
 
     [Fact]
     public void DevraitEtreJetee_retourne_faux_si_dateVerification_egale_a_meilleure_avant()
     {
-        //TODO Retirer et écrire le test
-        Assert.Fail();
+        DateOnly dateVerification = dateProduction.AddDays(3);
+        Tarte tarte = new Tarte(recette, dateProduction);
+
+        Assert.False(tarte.DevraitEtreJetee(dateVerification));
     }
 }
