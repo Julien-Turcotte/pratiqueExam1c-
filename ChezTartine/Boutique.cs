@@ -68,7 +68,10 @@ public class Boutique
 
                 //deduction du solde
                 tarte1.Prix = recette.CoutProduction;
-                Solde =- tarte1.Prix;
+                Solde -= tarte1.Prix;
+
+                //assigmeoemr le prix de vente suggéré
+                tarte1.Prix = recette.PrixDetail;
             }
             catch (Exception)
             {
@@ -89,9 +92,12 @@ public class Boutique
     public void VendreTarte(TypeTarte typeTarte)
     {
         Tarte? tarte = InventaireTartes.FirstOrDefault(t => t.Recette.TypeTarte == typeTarte);
-        if (!(tarte is Tarte))
+        if (tarte is Tarte)
+        // enlevé le ! pour voir si tarte est de type TarteS
+  
         {
-            Solde = tarte.Prix;
+            // augmenter le solde avec '+=' au lieu de supprimer et remplacer avec '='
+            Solde += tarte.Prix;
             InventaireTartes.Remove(tarte);
         }
         else
